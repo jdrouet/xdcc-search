@@ -1,0 +1,22 @@
+[package]
+name = "xdcc-search"
+description = "Crate to search in the xdcc databases available online"
+authors = ["Jeremie Drouet <jeremie.drouet@gmail.com>"]
+license = "MIT"
+version = "0.1.0"
+edition = "2024"
+readme = "readme.md"
+
+[dependencies]
+reqwest = { version = "0.12.15", default-features = false, features = [
+    "json",
+    "rustls-tls",
+] }
+serde = { version = "1.0.219", features = ["derive"] }
+thiserror = "2.0.12"
+tracing = "0.1.41"
+
+[dev-dependencies]
+mockito = "1.7.0"
+test-case = "3.3.1"
+tokio = { version = "1.45.1", features = ["macros", "rt-multi-thread"] }
