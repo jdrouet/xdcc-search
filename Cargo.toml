@@ -3,7 +3,7 @@ name = "xdcc-search"
 description = "Crate to search in the xdcc databases available online"
 authors = ["Jeremie Drouet <jeremie.drouet@gmail.com>"]
 license = "MIT"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 readme = "readme.md"
 
