@@ -95,13 +95,13 @@ impl Response {
     fn into(self) -> Vec<Entry> {
         self.fname
             .into_iter()
-            .zip(self.fsize.into_iter())
-            .zip(self.gets.into_iter())
-            .zip(self.packnum.into_iter())
-            .zip(self.channel.into_iter())
-            .zip(self.network.into_iter())
-            .zip(self.bot.into_iter())
-            .zip(self.botrec.into_iter())
+            .zip(self.fsize)
+            .zip(self.gets)
+            .zip(self.packnum)
+            .zip(self.channel)
+            .zip(self.network)
+            .zip(self.bot)
+            .zip(self.botrec)
             .enumerate()
             .filter_map(
                 |(
@@ -155,7 +155,8 @@ impl Entry {
     /// # Errors
     ///
     /// Returns `DecodingError` if any field fails to parse or is malformed.
-    pub fn try_decode(
+    #[allow(clippy::too_many_arguments)]
+    fn try_decode(
         fname: String,
         fsize: String,
         downloads: String,
@@ -232,7 +233,7 @@ fn decode_filesize(value: String) -> Result<u64, DecodingError> {
         'g' => 1024.0 * 1024.0 * 1024.0,
         't' => 1024.0 * 1024.0 * 1024.0 * 1024.0,
         'p' => 1024.0 * 1024.0 * 1024.0 * 1024.0 * 1024.0,
-        '0'..'9' => 1.0,
+        '0'..='9' => 1.0,
         _ => {
             return Err(DecodingError::InvalidFormat {
                 field: FILESIZE_FIELD,
