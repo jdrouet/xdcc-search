@@ -14,7 +14,7 @@ reqwest = { version = "0.12.15", default-features = false, features = [
 ] }
 serde = { version = "1.0.219", features = ["derive"] }
 thiserror = "2.0.12"
-tracing = "0.1.41"
+tracing = "0.1.42"
 
 [dev-dependencies]
 mockito = "1.7.0"
